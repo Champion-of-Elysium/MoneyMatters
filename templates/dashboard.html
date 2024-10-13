@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+  dashboard
+{% endblock %}
+
+{% block content %}
+  <div class="flex justify-center items-center h-screen">
+    <div class="bg-gray-100 w-[95%] h-[90%] rounded-lg shadow-lg flex">
+      
+      <!-- Side Menu -->
+      <div class="bg-gray-800 w-1/5 h-full text-white p-4 rounded-l-lg">
+        <h2 class="text-xl font-bold mb-6 text-center">Money Matters</h2>
+        <!-- Add your side menu items here -->
+        <ul>
+          <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Dashboard</a></li>
+          <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Settings</a></li>
+          <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Reports</a></li>
+          <!-- Add more menu items here -->
+        </ul>
+      </div>
+
+      <!-- Content Page -->
+      <div class="flex-1 bg-gray-100 p-6 rounded-r-lg">
+        <!-- Head Bar -->
+        <div class="flex justify-between items-center bg-white shadow-md rounded-lg p-4 mb-4">
+          <div class="text-sm text-gray-500">
+            Today: time
+          </div>
+          <div class="text-lg font-semibold text-gray-700">
+            General Balance: <span class="text-blue-600">N/A</span>
+          </div>
+          <div class="text-lg font-semibold">
+            <span class="text-blue-600">User Name</span>
+          </div>
+        </div>
+
+        <!-- Content area -->
+        <div class="bg-white rounded-lg p-6">
+          <!-- Your main content goes here -->
+          Content page goes here...
+        </div>
+      </div>
+      
+    </div>
+  </div>
+{% endblock %}
