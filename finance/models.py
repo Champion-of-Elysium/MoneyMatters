@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 from users.models import User
 from .variables import CurrencyTypeChoices, TransactionTypeChoices, TransactionCategoryChoices
 
@@ -17,6 +18,14 @@ class Transaction(models.Model):
     category = models.CharField(max_length=50, choices=TransactionCategoryChoices.choices, verbose_name="Transaction Category")
     date = models.DateTimeField(blank=False)
     descrioption = models.TextField(blank=False)
+
+    @staticmethod
+    def get_income_total(user):
+        return Transaction.objects.filter(user=user, transaction_type="income").aggregate(total_income=Sum('amount'))['total_income'] or 0
+
+    @staticmethod
+    def get_expense_total(user):
+        return Transaction.objects.filter(user=user, transaction_type="expense").aggregate(total_expense=Sum('amount'))['total_expense'] or 0
 
 class SavingsGoal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
