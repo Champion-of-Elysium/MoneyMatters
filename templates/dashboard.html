@@ -6,42 +6,112 @@
 
 {% block content %}
   <div class="flex justify-center items-center h-screen">
-    <div class="bg-gray-100 w-[95%] h-[90%] rounded-lg shadow-lg flex">
-      
-      <!-- Side Menu -->
-      <div class="bg-gray-800 w-1/5 h-full text-white p-4 rounded-l-lg">
-        <h2 class="text-xl font-bold mb-6 text-center">Money Matters</h2>
-        <!-- Add your side menu items here -->
-        <ul>
-          <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Dashboard</a></li>
-          <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Transactions</a></li>
-          <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Advance Search</a></li>
-          <!-- Add more menu items here -->
-        </ul>
-      </div>
-
-      <!-- Content Page -->
-      <div class="flex-1 bg-gray-100 p-6 rounded-r-lg">
-        <!-- Head Bar -->
-        <div class="flex justify-between items-center bg-white shadow-md rounded-lg p-4 mb-4">
-          <div class="text-sm text-gray-500">
-            Today: time
-          </div>
-          <div class="text-lg font-semibold text-gray-700">
-            General Balance: <span class="text-blue-600">N/A</span>
-          </div>
-          <div class="text-lg font-semibold">
-            <span class="text-blue-600">User Name</span>
-          </div>
+    <div class="overflow-x-auto">
+      <div class="bg-gray-100 w-[1200px] h-[90vh] rounded-lg shadow-lg flex flex-nowrap">
+        
+        <!-- Side Menu -->
+        <div class="bg-[#091f2a] w-[250px] h-full text-white p-4 rounded-l-lg flex-shrink-0">
+          <h2 class="text-xl font-bold mb-6 text-center">Money Matters</h2>
+          <!-- Add your side menu items here -->
+          <ul>
+            <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Dashboard</a></li>
+            <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Transactions</a></li>
+            <li class="mx-4 mb-3"><a href="#" class="hover:text-gray-300">Advance Search</a></li>
+            <!-- Add more menu items here -->
+          </ul>
         </div>
 
-        <!-- Content area -->
-        <div class="bg-white rounded-lg p-6">
-          <!-- Your main content goes here -->
-          Content page goes here...
+        <!-- Content Page -->
+        <div class="relative w-[950px] bg-[#031519] p-6 rounded-r-lg flex-shrink-0 text-white">
+          <!-- Head Bar -->
+          <div class="flex justify-between items-center bg-[#031519] shadow-md rounded-lg p-4 mb-4">
+            <div class="text-sm">
+              Today: time
+            </div>
+            <div class="text-lg font-semibold">
+              General Balance: <span class="text-blue-600">N/A</span>
+            </div>
+            <div class="text-lg font-semibold">
+              <span class="text-blue-600">User Name</span>
+            </div>
+          </div>
+
+
+          <!-- Accounts -->
+          <div class="bg-[#091f2a] rounded-lg p-6 mt-4">
+            <p>Accounts</p>
+            <div class="grid grid-cols-4 gap-4 w-full text-center place-items-center">
+              <!-- First row -->
+              <div class="flex flex-row justify-between my-2 p-1 border border-[#4a8e65] w-full">
+                <p class="flex-grow text-left">Account name</p>
+                <p class="text-right">budget</p>
+              </div>
+              <!-- Second row -->
+              <div class="flex flex-row justify-between my-2 p-1 border border-[#4a8e65] w-full">
+                <p class="flex-grow text-left">Account name</p>
+                <p class="text-right">budget</p>
+              </div>
+              <!-- Third row -->
+              <div class="flex flex-row justify-between my-2 p-1 border border-[#4a8e65] w-full">
+                <p class="flex-grow text-left">Account name</p>
+                <p class="text-right">budget</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statics -->
+          <div class="bg-[#091f2a] rounded-lg p-6 mt-4">
+            <p>Statics</p>
+            <div class="grid grid-cols-4 gap-4 w-full text-center place-items-center">
+              <!-- First row -->
+              <div class="flex flex-row justify-between my-2 p-1 border w-full">
+                <div>
+                  <canvas id="myChart"></canvas>
+                </div>
+                
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                
+                <script>
+                  const ctx = document.getElementById('myChart');
+                
+                  new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                      datasets: [{
+                        data: {{ data }},
+                        backgroundColor: [
+                          'red', 'orange', 'blue', 'yellow', 'green'
+                        ],
+                        label: '# of Votes'
+                      }],
+                      labels: {{ labels }},
+                    },
+                    options: {
+                      responsive: true
+                    }
+                  });
+                </script>
+                
+              </div>
+              <!-- Second row -->
+              <div class="flex flex-row justify-between my-2 p-1 border w-full">
+                <p class="flex-grow text-left">Account name</p>
+                <p class="text-right">budget</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-4 gap-4 w-full text-center">
+            <div class="flex flex-row rounded-lg p-6 mt-4 bg-[#091f2a]">
+              asdasdasdad
+            </div>
+            <div class="flex flex-row rounded-lg p-6 mt-4 bg-[#091f2a]">
+              asdasdasdad
+            </div>
+          </div>
+          
         </div>
       </div>
-      
     </div>
   </div>
 {% endblock %}
